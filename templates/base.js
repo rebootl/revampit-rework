@@ -6,12 +6,14 @@ const locale = {
       metaDescription: 'Learn about our mission to extend the life of IT devices and promote sustainable computing practices.'
     },
     nav: {
+      home: 'Home',
       services: 'Services',
       servicesComputerRepair: 'Computer Repair & Upgrades',
       servicesDataRecovery: 'Data Recovery & Transfer',
       servicesHardwareRecycling: 'Hardware Recycling',
       servicesWebDesign: 'Web Design & Development',
       shop: 'Shop',
+      wiki: 'Wiki',
       projects: 'Projects',
       workshops: 'Workshops',
       getInvolved: 'Get Involved',
@@ -39,12 +41,14 @@ const locale = {
       metaDescription: 'Erfahren Sie mehr über unsere Mission, die Lebensdauer von IT-Geräten zu verlängern und nachhaltige Computerpraktiken zu fördern.'
     },
     nav: {
+      home: 'Startseite',
       services: 'Dienstleistungen',
       servicesComputerRepair: 'Computerreparatur & Upgrades',
       servicesDataRecovery: 'Datenrettung & Übertragung',
       servicesHardwareRecycling: 'Hardware-Recycling',
       servicesWebDesign: 'Webdesign & Entwicklung',
       shop: 'Shop',
+      wiki: 'Wiki',
       projects: 'Projekte',
       workshops: 'Workshops',
       getInvolved: 'Mitmachen',
@@ -71,6 +75,10 @@ const locale = {
 // rework/templates/base.js
 const navItems = [
   {
+    key: 'home',
+    link: '/'
+  },
+  {
     key: 'services',
     dropdown: true,
     items: [
@@ -84,6 +92,10 @@ const navItems = [
     key: 'shop',
     link: 'https://shop.revamp-it.ch/',
     external: true
+  },
+  {
+    key: 'wiki',
+    link: '/wiki'
   },
   {
     key: 'projects',
@@ -137,7 +149,7 @@ export const baseTemplate = ({ content, ref, currentLanguage }) => `
               <span class="text-xl font-bold text-gray-900">RevampIT</span>
             </a>
           </div>
-          <div class="items-center lg:flex lg:gap-x-12">
+          <div class="items-center lg:flex lg:gap-x-6">
 
             ${ navItems.map(item => item.dropdown ?
                 `<div class="relative group nav-dropdown-parent">

@@ -151,7 +151,10 @@ export const baseTemplate = ({ content, ref, currentLanguage }) => `
                      `).join('')}
                    </div>
                  </div>` :
-                `<a href="${item.link}" class="text-sm font-semibold leading-6 text-gray-900 hover:text-green-600 transition-colors duration-200" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ''}>${locale[currentLanguage].nav[item.key]}</a>`
+                `<a href="${item.link}" class="text-sm font-semibold leading-6 text-gray-900 hover:text-green-600 transition-colors duration-200 ${item.external ? 'flex items-center' : ''}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+                  ${locale[currentLanguage].nav[item.key]}
+                  ${item.external ? '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 3h6v6M10 14L21 3"/></svg>' : ''}
+                </a>`
             ).join('') }
 
             <a href="/contact" class="text-sm font-semibold leading-6 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200">${locale[currentLanguage].nav.contact}</a>

@@ -2,14 +2,10 @@ export function pageContent(language) {
   return `
 <main class="pt-20 min-h-screen">
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-green-700 via-green-800 to-green-900 text-white py-24 overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-    <div class="container mx-auto px-4 relative">
-      <div class="max-w-3xl">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">Workshops — Linux & Open Source</h1>
-        <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-green-200">Practical training to help you use and maintain open source software</h2>
-        <p class="text-xl text-green-100">We provide hands-on workshops on Linux and other open source tools for individuals, schools and organisations. Our sessions focus on practical skills, privacy-respecting software, and getting the most out of older hardware.</p>
-      </div>
+  <section class="bg-gray-200 py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl font-bold mb-4">Workshops — Linux & Open Source</h1>
+      <p class="text-gray-600">Practical training to help you use and maintain open source software. We provide hands-on workshops for individuals, schools and organisations focused on practical skills and privacy-respecting tools.</p>
     </div>
   </section>
 

@@ -83,10 +83,10 @@ const projects = [
 export function pageContent(language) {
   return `
   <main class="pt-20 min-h-screen">
-    <section class="bg-gray-200 py-16">
+    <section class="bg-gray-200 py-20">
       <div class="container mx-auto px-4 text-center">
         <h1 class="text-3xl font-bold mb-4">${locale[language].title}</h1>
-        <p class="text-gray-600 mb-8">${locale[language].description}</p>
+        <p class="text-gray-600">${locale[language].description}</p>
       </div>
     </section>
 

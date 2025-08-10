@@ -93,13 +93,10 @@ export function pageContent(language) {
   return `
 <main class="pt-20 min-h-screen">
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-green-700 via-green-800 to-green-900 text-white py-24 overflow-hidden">
-    <div class="container mx-auto px-4 relative">
-      <div class="max-w-3xl">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">${repairDetails.hero.title}</h1>
-        <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-green-200">${repairDetails.hero.subtitle}</h2>
-        <p class="text-xl text-green-100">${repairDetails.hero.description}</p>
-      </div>
+  <section class="bg-gray-200 py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl font-bold mb-4">${repairDetails.hero.title}</h1>
+      <p class="text-gray-600">${repairDetails.hero.description}</p>
     </div>
   </section>
 

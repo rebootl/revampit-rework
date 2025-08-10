@@ -1,5 +1,4 @@
-
-## TODO
+## WIP
 
 * add missing content pages
   * /services/computer-repair-upgrades
@@ -15,7 +14,7 @@
     to have at least these
     additional pages for later are mostly in the services for example cloud hosting etc.
 
-* break out into separate repository
+## TODO
 
 * check/cleanup the dependencies in the package.jsons
 
@@ -51,7 +50,9 @@
   * timeout after wrong login
   * make the database and route configurable
 
-### Done
+## DONE
+
+* break out into separate repository
 
 * how to bundle tailwind for production?
   currently I'm just using Play CDN for development

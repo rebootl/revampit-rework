@@ -73,7 +73,6 @@ export function pageContent(language) {
 <main class="pt-20 min-h-screen">
   <!-- Hero Banner -->
   <section class="relative bg-gradient-to-br from-green-700 via-green-800 to-green-900 text-white py-24 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
     <div class="container mx-auto px-4 relative">
       <div class="max-w-3xl">
         <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">${locale[language].heroBannerTitle}</h1>

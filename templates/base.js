@@ -32,7 +32,8 @@ const locale = {
       monday: 'Monday: 9:00 - 12:00',
       tueFri: 'Tuesday - Friday: 13:00 - 17:00',
       allRightsReserved: 'All rights reserved.',
-      social1: 'Follow us on Mastodon'
+      social1: 'Follow us on Mastodon',
+      contactMap: 'Contact / Map'
     }
   },
   de: {
@@ -67,7 +68,8 @@ const locale = {
       monday: 'Montag: 9:00 - 12:00',
       tueFri: 'Dienstag - Freitag: 13:00 - 17:00',
       allRightsReserved: 'Alle Rechte vorbehalten.',
-      social1: 'Folge uns auf Mastodon'
+      social1: 'Folge uns auf Mastodon',
+      contactMap: 'Kontakt / Karte'
     }
   }
 }
@@ -238,7 +240,7 @@ export const baseTemplate = ({ content, ref, currentLanguage }) => `
                 </div>
                 <div class="flex items-center">
                   <span class="w-5 h-5 mr-3">✉️</span>
-                  <a href="mailto:empfang@revamp-it.ch" class="text-gray-300 hover:text-white transition-colors">empfang@revamp-it.ch</a>
+                  <a href="/contact" class="text-gray-300 hover:text-white transition-colors">${locale[currentLanguage].footer.contactMap}</a>
                 </div>
               </div>
             </div>

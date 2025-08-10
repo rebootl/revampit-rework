@@ -41,6 +41,30 @@ export function pageContent(language) {
     </div>
   </section>
 
+  <!-- Map (OpenStreetMap embed) -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+       <h2 class="text-2xl font-bold mb-6">Our retail location in Zurich</h2>
+       <p class="pb-6">With public transports: Tram 9/14, next to station: Heuried</p>
+       <div class="w-full h-[560px] rounded-xl overflow-hidden shadow">
+       <!--
+          Replace the coordinates (mlat, mlon and bbox values) with your location.
+          To get an embed URL for a specific place: open https://www.openstreetmap.org, find the location, click 'Share' and copy the embed URL.
+        -->
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=8.5034619%2C47.3675377%2C8.5064619%2C47.3705377&layer=mapnik&marker=47.3690377,8.5049619"
+          class="w-full h-full"
+        ></iframe>
+      </div>
+      <p class="text-sm text-gray-600 mt-2"><a href="https://www.openstreetmap.org/?mlat=47.3690377&amp;mlon=8.5049619#map=18/47.3690377/8.5049619" target="_blank" rel="noopener noreferrer" class="text-green-700 underline">View larger map on OpenStreetMap</a></p>
+    </div>
+  </section>
 
 </main>
 `.trim();

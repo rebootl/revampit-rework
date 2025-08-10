@@ -76,7 +76,7 @@ export function pageContent(language) {
     <div class="container mx-auto px-4 relative">
       <div class="max-w-3xl">
         <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">${locale[language].heroBannerTitle}</h1>
-        <p class="text-xl text-green-100 mb-8">${locale[language].heroBannerDescription}</p>
+        <p class="text-xl text-green-100">${locale[language].heroBannerDescription}</p>
       </div>
     </div>
   </section>

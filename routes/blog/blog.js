@@ -23,8 +23,8 @@ function getBlogEntries(req, _res) {
 
 /**
  * The HTML content for the blog page, exported as a template literal function.
- * @param {Array<Object>} entries - Array of blog entries. Each entry should have at least { slug, title, content }.
- * @param {string} [language='en'] - The current language code ('en' or 'de').
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
  * @returns {string} The HTML content
  */
 export function pageContent(req, res) {

@@ -121,11 +121,15 @@ const navItems = [
  * Returns the base HTML template with the provided content inserted.
  * @param {Object} params
  * @param {string} params.content - The HTML content to insert into the main area.
- * @param {string} params.ref - The referrer URL
- * @param {string} params.currentLanguage - The current language
+ * @param {Object} params.req - The request object
  * @returns {string} The full HTML string.
  */
-export const baseTemplate = ({ content, ref, currentLanguage }) => `
+export const baseTemplate = ({ content, req }) => {
+
+  const ref = req.path || '';
+  const currentLanguage = req.lang || 'en';
+
+  return `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -274,4 +278,4 @@ export const baseTemplate = ({ content, ref, currentLanguage }) => `
     </div>
   </body>
 </html>
-`;
+`;}

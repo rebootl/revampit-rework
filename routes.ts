@@ -31,10 +31,8 @@ export async function createEndpoints(app: express.Application, routesDir: strin
     const templateFunction = templateModule.pageContent;
 
     app.get(basePath, (req: express.Request, res: express.Response) => {
-      const ref = req.path || '';
-      const lang = req.lang || 'en';
       const content = templateFunction(req, res);
-      const html = baseTemplate({ content, ref, currentLanguage: lang || 'en' });
+      const html = baseTemplate({ content, req });
       res.send(html);
     });
   }

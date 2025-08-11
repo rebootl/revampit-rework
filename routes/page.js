@@ -63,7 +63,7 @@ const locale = {
   }
 };
 
-function getNewsData(req, res) {
+function getNewsData(req) {
   const language = req.lang || 'en'; // Default to English if no language is set
   try {
     const stmt = req.db.prepare('SELECT * FROM entries WHERE type = ? AND draft = 0 AND language = ? ORDER BY created_at DESC LIMIT 1');
@@ -71,7 +71,7 @@ function getNewsData(req, res) {
     return latestEntry;
   } catch (error) {
     console.error('Error fetching blog entries:', error);
-    res.status(500).send('An error occurred while fetching entries');
+    return null;
   }
 }
 
@@ -81,9 +81,9 @@ function getNewsData(req, res) {
  * @param {Object} res - The response object
  * @returns {string} The HTML content
  */
-export function pageContent(req, res) {
+export function pageContent(req) {
   const language = req.lang || 'en'; // Default to English if no language is set
-  const newsData = getNewsData(req, res); // Call the request hook to get the latest entry
+  const newsData = getNewsData(req); // Call the request hook to get the latest entry
   return `
 <main class="pt-20 min-h-screen">
   <!-- Hero Banner -->

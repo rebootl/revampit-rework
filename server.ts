@@ -3,7 +3,6 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 
 import adminApp from './admin/admin.ts';
-import blogApp from './blog.ts';
 import { createLanguageApp } from './language/language.ts';
 
 import { createEndpoints } from './routes.ts';
@@ -35,11 +34,6 @@ const languageApp = createLanguageApp('lang', '/set-lang');
 app.use(languageApp);
 
 // below pages are rendered using the base template from './templates/base.js'
-
-// use blog app
-// this renders dynamic blog articles that are managed by the admin app
-// under the endpoint '/blog'
-// app.use(blogApp);
 
 // create static endpoints from directory structure
 // this recursively creates endpoints for each 'page.js' file

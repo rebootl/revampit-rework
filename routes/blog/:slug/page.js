@@ -1,4 +1,4 @@
-function getBlogEntry(req, res) {
+function getBlogEntry(req) {
   const lang = req.lang || 'en'; // Default to English if no language is set
 
   const { slug } = req.params;
@@ -13,8 +13,8 @@ function getBlogEntry(req, res) {
   }
 }
 
-export function pageContent(req, res) {
-  const entry = getBlogEntry(req, res);
+export function pageContent(req) {
+  const entry = getBlogEntry(req);
   if (!entry) {
     return `
   <main class="pt-20 min-h-screen">

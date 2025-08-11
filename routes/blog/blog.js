@@ -9,7 +9,7 @@ const locale = {
   }
 };
 
-function getBlogEntries(req, _res) {
+function getBlogEntries(req) {
   const lang = req.lang || 'en';
   try {
     const stmt = req.db.prepare('SELECT * FROM entries WHERE type = ? AND draft = 0 AND language = ? ORDER BY created_at DESC');
@@ -24,11 +24,10 @@ function getBlogEntries(req, _res) {
 /**
  * The HTML content for the blog page, exported as a template literal function.
  * @param {Object} req - The request object
- * @param {Object} res - The response object
  * @returns {string} The HTML content
  */
-export function pageContent(req, res) {
-  const entries = getBlogEntries(req, res);
+export function pageContent(req) {
+  const entries = getBlogEntries(req);
   const lang = req.language || 'en';
   return `
   <main class="pt-20 min-h-screen">

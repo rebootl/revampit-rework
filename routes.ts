@@ -31,7 +31,7 @@ export async function createEndpoints(app: express.Application, routesDir: strin
     const templateFunction = templateModule.pageContent;
 
     app.get(basePath, (req: express.Request, res: express.Response) => {
-      const content = templateFunction(req, res);
+      const content = templateFunction(req);
       const html = baseTemplate({ content, req });
       res.send(html);
     });

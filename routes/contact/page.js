@@ -1,10 +1,9 @@
 /**
  * The HTML content for the page, exported as a template literal function.
  * @param {Object} req - The request object
- * @param {Object} res - The response object
  * @returns {string} The HTML content
  */
-export function pageContent(req, res) {
+export function pageContent(req) {
   return `
 <main class="pt-20 min-h-screen">
   <!-- Hero -->

@@ -76,11 +76,12 @@ const projects = [
 
 /**
  * The HTML content for the projects page, exported as a template literal function.
- * @param {Object} params
- * @param {string} params.language - The current language
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
  * @returns {string} The HTML content
  */
-export function pageContent(language) {
+export function pageContent(req, res) {
+  const language = req.language || 'en'; // Default to English if no language is set
   return `
   <main class="pt-20 min-h-screen">
     <section class="bg-gray-200 py-20">

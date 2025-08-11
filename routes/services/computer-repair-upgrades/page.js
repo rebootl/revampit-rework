@@ -1,4 +1,10 @@
-export function pageContent(language) {
+/**
+ * The HTML content for the page, exported as a template literal function.
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
+ * @returns {string} The HTML content
+ */
+export function pageContent(req, res) {
   const repairDetails = {
     hero: {
       title: 'Computer Repair & Upgrades',

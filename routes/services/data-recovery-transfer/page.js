@@ -1,4 +1,10 @@
-export function pageContent(language) {
+/**
+ * The HTML content for the page, exported as a template literal function.
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
+ * @returns {string} The HTML content
+ */
+export function pageContent(req, res) {
   const service = {
     title: 'Data Recovery & Transfer',
     description: 'Professional data transfer and recovery services for all types of storage media. We help you access and transfer your valuable data from any device or format.',

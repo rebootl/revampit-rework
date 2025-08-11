@@ -63,14 +63,27 @@ const locale = {
   }
 };
 
-// rework/templates/home.js
+function getNewsData(req, res) {
+  const language = req.lang || 'en'; // Default to English if no language is set
+  try {
+    const stmt = req.db.prepare('SELECT * FROM entries WHERE type = ? AND draft = 0 AND language = ? ORDER BY created_at DESC LIMIT 1');
+    const latestEntry = stmt.get('news', language);
+    return latestEntry;
+  } catch (error) {
+    console.error('Error fetching blog entries:', error);
+    res.status(500).send('An error occurred while fetching entries');
+  }
+}
+
 /**
  * The HTML content for the home page, exported as a template literal function.
- * @param {Object} params
- * @param {string} params.language - The current language
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
  * @returns {string} The HTML content
  */
-export function pageContent(language) {
+export function pageContent(req, res) {
+  const language = req.lang || 'en'; // Default to English if no language is set
+  const newsData = getNewsData(req, res); // Call the request hook to get the latest entry
   return `
 <main class="pt-20 min-h-screen">
   <!-- Hero Banner -->
@@ -82,6 +95,17 @@ export function pageContent(language) {
       </div>
     </div>
   </section>
+  <!-- News Section -->
+  ${newsData ? `
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">${newsData.title}</h2>
+        <p class="text-lg">
+          ${newsData.content}
+        </p>
+      </div>
+    </section>
+  ` : ''}
   <!-- Mission Section -->
   <section class="py-20 px-4 max-w-6xl mx-auto">
     <div class="space-y-8">

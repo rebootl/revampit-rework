@@ -4,8 +4,9 @@ const locale = {
     "heroBannerDescription": "For 15 years, we've been fighting against the premature retirement of computers and promoting sustainable IT practices.",
     "missionSectionTitle": "Who we are",
     "missionSectionText": "At RevampIT, we believe in \"Retirement Age 10 for Laptops!\" We're a non-profit organization that has been transforming the way people think about technology since 2009. Our mission is simple but powerful: extend the life of IT devices and reduce electronic waste through repair, refurbishment, and sustainable practices.",
-    "missionSectionImageAlt": "RevampIT storefront with large windows displaying computers and equipment",
-    "impactSectionTitle": "Our Impact",
+     "missionSectionImageAlt": "RevampIT storefront with large windows displaying computers and equipment",
+     "storefrontCaption": "Our storefront at the Birmensdorferstrasse in Zurich",
+     "impactSectionTitle": "Our Impact",
     "impactHardwareTitle": "Hardware Recycling",
     "impactHardwareText": "We repair and refurbish IT devices of all ages, giving them a second life and reducing electronic waste. From 11-year-old MacBooks to vintage computers, we believe every device deserves a chance to continue serving its purpose. Our repair services help keep technology out of landfills and in the hands of those who need it.",
     "impactOpenSourceTitle": "Open Source Software",
@@ -35,6 +36,7 @@ const locale = {
     "missionSectionTitle": "Wer wir sind",
     "missionSectionText": "Bei RevampIT glauben wir an \"Rentenalter 10 für Laptops!\" Wir sind eine gemeinnützige Organisation, die seit 2009 die Art und Weise verändert, wie Menschen über Technologie denken. Unsere Mission ist einfach, aber wirkungsvoll: die Lebensdauer von IT-Geräten verlängern und Elektroschrott durch Reparatur, Wiederaufbereitung und nachhaltige Praktiken reduzieren.",
     "missionSectionImageAlt": "RevampIT Schaufenster mit großen Fenstern, die Computer und Ausrüstung zeigen",
+    "storefrontCaption": "Unser Laden an der Birmensdorferstrasse in Zürich",
     "impactSectionTitle": "Unsere Wirkung",
     "impactHardwareTitle": "Hardware-Recycling",
     "impactHardwareText": "Wir reparieren und überholen IT-Geräte jeden Alters, geben ihnen ein zweites Leben und reduzieren Elektroschrott. Von 11 Jahre alten MacBooks bis zu Vintage-Computern – wir glauben, dass jedes Gerät eine weitere Chance verdient. Unsere Reparaturdienste helfen, Technik aus der Mülldeponie zu halten und in die Hände derer zu geben, die sie brauchen.",
@@ -91,6 +93,7 @@ export function pageContent(language) {
         <div class="relative w-full h-[400px] rounded-lg overflow-hidden my-8 mt-32">
           <img src="/static/storefront.png" alt="${locale[language].missionSectionImageAlt}" class="object-cover w-full h-full" />
         </div>
+        <p class="text-sm text-gray-600 mt-2 italic text-center">${locale[language].storefrontCaption}</p>
       </div>
     </div>
   </section>

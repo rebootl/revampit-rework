@@ -60,9 +60,10 @@ export const editEntryPageContent = ({ entry, currentLanguage, isNew = false }) 
           >
             ${isNew ? '<option value="">Select type...</option>' : ''}
             <option value="blog" ${entry?.type === 'blog' ? 'selected' : ''}>Blog</option>
-            <option value="page" ${entry?.type === 'page' ? 'selected' : ''}>Page</option>
+            <option value="news" ${entry?.type === 'news' ? 'selected' : ''}>News</option>
+            <!--<option value="page" ${entry?.type === 'page' ? 'selected' : ''}>Page</option>
             <option value="project" ${entry?.type === 'project' ? 'selected' : ''}>Project</option>
-            <option value="workshop" ${entry?.type === 'workshop' ? 'selected' : ''}>Workshop</option>
+            <option value="workshop" ${entry?.type === 'workshop' ? 'selected' : ''}>Workshop</option>-->
           </select>
         </div>
 

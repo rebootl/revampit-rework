@@ -120,6 +120,17 @@ const exampleEntries = [
     created_by: 1, // Assuming admin user has id 1
     type: 'blog',
     draft: 0
+  },
+  {
+    title: '🚨 Latest 📢',
+    slug: 'latest-news',
+    content: '<b>Not with us, Mr. President:</b>\n\nCustomers from the United States of America get 39% of discount on all product prices <a href="https://shop.revamp-it.ch/" target="_blank" class="text-blue-800">in our webshop!</a><br>(If you live in the US, please choose prepayment with invoice when placing your order, we will then send you a customized invoice!)',
+    language: 'en',
+    created_at: new Date().toISOString(),
+    modified_at: new Date().toISOString(),
+    created_by: 1, // Assuming admin user has id 1
+    type: 'news',
+    draft: 0
   }
 ];
 

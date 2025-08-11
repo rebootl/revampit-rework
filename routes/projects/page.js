@@ -81,7 +81,7 @@ const projects = [
  * @returns {string} The HTML content
  */
 export function pageContent(req, res) {
-  const language = req.language || 'en'; // Default to English if no language is set
+  const language = req.lang || 'en'; // Default to English if no language is set
   return `
   <main class="pt-20 min-h-screen">
     <section class="bg-gray-200 py-20">

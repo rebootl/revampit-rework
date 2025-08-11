@@ -14,22 +14,22 @@ const app = express();
 // app.use(dbApp);
 
 // Route to get all blog entries
-app.get('/blog', (req: Request, res: Response) => {
-  const lang = req.lang || 'en';
-  try {
-    const stmt = req.db.prepare('SELECT * FROM entries WHERE type = ? AND draft = 0 AND language = ? ORDER BY created_at DESC');
-    const entries = stmt.all('blog', lang);
-    const content = blogPageContent(entries, lang);
-    const html = baseTemplate({ content, ref: req.path, currentLanguage: lang });
-    res.send(html);
-  } catch (error) {
-    console.error('Error fetching blog entries:', error);
-    res.status(500).send('An error occurred while fetching blog entries');
-  }
-});
+// app.get('/blog', (req: Request, res: Response) => {
+//   const lang = req.lang || 'en';
+//   try {
+//     const stmt = req.db.prepare('SELECT * FROM entries WHERE type = ? AND draft = 0 AND language = ? ORDER BY created_at DESC');
+//     const entries = stmt.all('blog', lang);
+//     const content = blogPageContent(entries, lang);
+//     const html = baseTemplate({ content, ref: req.path, currentLanguage: lang });
+//     res.send(html);
+//   } catch (error) {
+//     console.error('Error fetching blog entries:', error);
+//     res.status(500).send('An error occurred while fetching blog entries');
+//   }
+// });
 
 // Route to get a single blog entry by slug
-app.get('/blog/:slug', (req: Request, res: Response) => {
+/* app.get('/blog/:slug', (req: Request, res: Response) => {
   const { slug } = req.params;
   const lang = req.lang || 'en';
   try {
@@ -46,6 +46,6 @@ app.get('/blog/:slug', (req: Request, res: Response) => {
     console.error(`Error fetching blog entry with slug ${slug}:`, error);
     res.status(500).send('An error occurred while fetching the blog entry');
   }
-});
+}); */
 
 export default app;

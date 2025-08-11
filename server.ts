@@ -39,7 +39,7 @@ app.use(languageApp);
 // use blog app
 // this renders dynamic blog articles that are managed by the admin app
 // under the endpoint '/blog'
-app.use(blogApp);
+// app.use(blogApp);
 
 // create static endpoints from directory structure
 // this recursively creates endpoints for each 'page.js' file

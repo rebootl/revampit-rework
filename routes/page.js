@@ -8,11 +8,23 @@ const locale = {
      "storefrontCaption": "Our storefront at the Birmensdorferstrasse 379 in Zurich",
      "impactSectionTitle": "Our Impact",
     "impactHardwareTitle": "Hardware Recycling",
-    "impactHardwareText": "We repair and refurbish IT devices of all ages, giving them a second life and reducing electronic waste. From 11-year-old MacBooks to vintage computers, we believe every device deserves a chance to continue serving its purpose. Our repair services help keep technology out of landfills and in the hands of those who need it.",
+    "impactHardwareBullets": [
+      "We repair and refurbish IT devices of all ages, giving them a second life and reducing electronic waste.",
+      "From 11-year-old MacBooks to vintage computers, we believe every device deserves a chance to continue serving its purpose.",
+      "Our repair services help keep technology out of landfills and in the hands of those who need it."
+    ],
     "impactOpenSourceTitle": "Open Source Software",
-    "impactOpenSourceText": "We're strong advocates for Linux and other open-source solutions. These technologies not only keep older devices running efficiently but also provide security advantages by giving users control over their systems. Our regular workshops help people learn how to use these powerful tools effectively.",
+    "impactOpenSourceBullets": [
+      "We're strong advocates for Linux and other open-source solutions.",
+      "These technologies keep older devices running efficiently and provide security advantages by giving users control over their systems.",
+      "Our regular workshops help people learn how to use these powerful tools effectively."
+    ],
     "impactCommunityTitle": "Community Impact",
-    "impactCommunityText": "We create meaningful employment opportunities for those who might struggle in traditional job markets. We also provide hosting and cloud services for Swiss SMEs who want to keep their data in Switzerland.",
+    "impactCommunityBullets": [
+      "We create meaningful employment opportunities for those who might struggle in traditional job markets.",
+      "We encourage the exchange of knowledge between diverse groups of people.",
+      "We also provide hosting and cloud services for Swiss SMEs who want to keep their data in Switzerland."
+    ],
     "byNumbersSectionTitle": "By the Numbers",
     "byNumbersEnvTitle": "Environmental Impact",
     "byNumbersEnvLifespan": "Years average device lifespan extension through our refurbishment program",
@@ -39,11 +51,23 @@ const locale = {
     "storefrontCaption": "Unser Laden an der Birmensdorferstrasse 379 in Zürich",
     "impactSectionTitle": "Unsere Wirkung",
     "impactHardwareTitle": "Hardware-Recycling",
-    "impactHardwareText": "Wir reparieren und überholen IT-Geräte jeden Alters, geben ihnen ein zweites Leben und reduzieren Elektroschrott. Von 11 Jahre alten MacBooks bis zu Vintage-Computern – wir glauben, dass jedes Gerät eine weitere Chance verdient. Unsere Reparaturdienste helfen, Technik aus der Mülldeponie zu halten und in die Hände derer zu geben, die sie brauchen.",
+    "impactHardwareBullets": [
+      "Wir reparieren und überholen IT-Geräte jeden Alters, geben ihnen ein zweites Leben und reduzieren Elektroschrott.",
+      "Von 11 Jahre alten MacBooks bis zu Vintage-Computern – wir glauben, dass jedes Gerät eine weitere Chance verdient.",
+      "Unsere Reparaturdienste helfen, Technik aus der Mülldeponie zu halten und in die Hände derer zu geben, die sie brauchen."
+    ],
     "impactOpenSourceTitle": "Open-Source-Software",
-    "impactOpenSourceText": "Wir sind starke Befürworter von Linux und anderen Open-Source-Lösungen. Diese Technologien halten nicht nur ältere Geräte effizient am Laufen, sondern bieten auch Sicherheitsvorteile, indem sie den Nutzern die Kontrolle über ihre Systeme geben. Unsere regelmäßigen Workshops helfen Menschen, diese leistungsstarken Werkzeuge effektiv zu nutzen.",
+    "impactOpenSourceBullets": [
+      "Wir sind starke Befürworter von Linux und anderen Open-Source-Lösungen.",
+      "Diese Technologien halten ältere Geräte effizient am Laufen und bieten Sicherheitsvorteile, indem sie den Nutzern die Kontrolle über ihre Systeme geben.",
+      "Unsere regelmäßigen Workshops helfen Menschen, diese leistungsstarken Werkzeuge effektiv zu nutzen."
+    ],
     "impactCommunityTitle": "Gemeinschaftliche Wirkung",
-    "impactCommunityText": "Wir schaffen sinnvolle Beschäftigungsmöglichkeiten für Menschen, die auf dem traditionellen Arbeitsmarkt Schwierigkeiten haben. Außerdem bieten wir Hosting- und Cloud-Services für Schweizer KMU, die ihre Daten in der Schweiz behalten möchten.",
+    "impactCommunityBullets": [
+      "Wir schaffen sinnvolle Beschäftigungsmöglichkeiten für Menschen, die auf dem traditionellen Arbeitsmarkt Schwierigkeiten haben.",
+      "Wir fördern den Wissensaustausch zwischen verschiedenen Gruppen von Menschen.",
+      "Außerdem bieten wir Hosting- und Cloud-Services für Schweizer KMU, die ihre Daten in der Schweiz behalten möchten."
+    ],
     "byNumbersSectionTitle": "In Zahlen",
     "byNumbersEnvTitle": "Umweltauswirkung",
     "byNumbersEnvLifespan": "Durchschnittliche Lebensdauerverlängerung von Geräten durch unser Refurbishment-Programm (Jahre)",
@@ -127,21 +151,21 @@ export function pageContent(req) {
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white p-8 rounded-lg shadow-md">
           <h3 class="text-xl font-semibold mb-4">${locale[language].impactHardwareTitle}</h3>
-          <p class="text-lg">
-            ${locale[language].impactHardwareText}
-          </p>
+          <div class="space-y-4 text-lg">
+            ${locale[language].impactHardwareBullets.map(b => `<p class="mb-4">${b}</p>`).join('')}
+          </div>
         </div>
         <div class="bg-white p-8 rounded-lg shadow-md">
           <h3 class="text-xl font-semibold mb-4">${locale[language].impactOpenSourceTitle}</h3>
-          <p class="text-lg">
-            ${locale[language].impactOpenSourceText}
-          </p>
+          <div class="space-y-4 text-lg">
+            ${locale[language].impactOpenSourceBullets.map(b => `<p class="mb-4">${b}</p>`).join('')}
+          </div>
         </div>
         <div class="bg-white p-8 rounded-lg shadow-md">
           <h3 class="text-xl font-semibold mb-4">${locale[language].impactCommunityTitle}</h3>
-          <p class="text-lg">
-            ${locale[language].impactCommunityText}
-          </p>
+          <div class="space-y-4 text-lg">
+            ${locale[language].impactCommunityBullets.map(b => `<p class="mb-4">${b}</p>`).join('')}
+          </div>
         </div>
       </div>
     </div>

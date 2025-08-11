@@ -2,7 +2,7 @@
 import express from 'express';
 import { Request, Response } from 'express';
 
-import dbApp from './admin/database/database.ts';
+// import dbApp from './admin/database/database.ts';
 
 import { pageContent as blogEntryTemplate } from './templates/blogEntry.js';
 import { pageContent as blogPageContent } from './templates/blog.js';
@@ -11,7 +11,7 @@ import { baseTemplate } from './templates/base.js';
 
 const app = express();
 
-app.use(dbApp);
+// app.use(dbApp);
 
 // Route to get all blog entries
 app.get('/blog', (req: Request, res: Response) => {

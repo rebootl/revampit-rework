@@ -8,22 +8,17 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "deno --allow-all --watch server.ts"
+    "dev": "deno --allow-all --watch server.ts",
+    "devtw": "npx tailwindcss -i ./tailwind-input.css -o ./static/tailwind.css --watch"
   },
   "dependencies": {
-    "admin": "file:admin",
     "cookie-parser": "^1.4.7",
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.11",
-    "nodemon": "^3.1.10",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.3",
     "tailwindcss": "^4.1.11"
-  },
-  "bundledDependencies": [
-    "admin"
-  ],
-  "bundleDependencies": [
-    "admin"
-  ]
+  }
 }

@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-const dbFile: string = process.env.DB_FILE || "./db/db.sqlite";
+const dbFile: string = process.env.DB_FILE || "../db/db.sqlite";
 
 const app = express();
 

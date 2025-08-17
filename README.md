@@ -28,8 +28,6 @@
 
 * header navigation responsive, currently it breaks on smaller width
 
-* shop link in the header should be visible that it goes to an external page
-
 * a way to submit forms
   this is needed for the contact page, and also to register a repair and another
   one to register a donation
@@ -52,7 +50,10 @@
 
 ## DONE
 
-* break out into separate repository
+* break out admin into separate repository
+
+* shop link in the header should be visible that it goes to an external page
+  => added a link icon next to the shop link in the header
 
 * how to bundle tailwind for production?
   currently I'm just using Play CDN for development
@@ -60,3 +61,5 @@
      the CLI scans the files and generates the output accordingly
 
      `npx tailwindcss -i ./tailwind-input.css -o ./static/tailwind.css`
+
+     added the command to `npm run devtw`

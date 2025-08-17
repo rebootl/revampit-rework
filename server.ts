@@ -2,7 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 
-import adminApp from './admin/admin.ts';
+import databaseApp from './database.ts';
 import { createLanguageApp } from './language/language.ts';
 
 import { createEndpoints } from './routes.ts';
@@ -24,7 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // this adds the admin interface under the endpoint '/admin'
 // it provides a login for the site owners and is used to
 // add and manage dynamic content like blog posts etc.
-app.use(adminApp);
+// app.use(adminApp);
+
+// Use the database app
+app.use(databaseApp);
 
 // use language app
 // this provides capabilities and for switching language on the site,

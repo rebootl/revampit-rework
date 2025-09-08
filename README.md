@@ -12,7 +12,7 @@ a lot of unnecessary complexity (e.g. bundling, state management etc.).
 On the other hand a completely static website may not offer enough flexibility and ease of use to update and manage content.
 
 For this demo we choose a somewhat mixed approach between a static and a dynamic page. Most of the website is built from static
-templates but specific areas for example a blog get the content from a database.
+templates but specific areas, for example a blog, get the content from a database.
 
 The content management system is split up into a separate project: https://github.com/rebootl/revamp-backend
 
@@ -54,17 +54,6 @@ The content management system is split up into a separate project: https://githu
   * use markdown for the content rendering
 
 * how to best handle req.. properties in typescript?
-
-* admin interface
-  * upload and manage images
-  * manage users
-  * delete entries
-  * dark mode
-  * increase timeout of session cookie
-    currently you get logged out after 24 hours I think, even when you're currently using the system,
-    which is kind of bad
-  * timeout after wrong login
-  * make the database and route configurable
 
 ## DONE
 

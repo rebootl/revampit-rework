@@ -1,3 +1,21 @@
+# Rework of the revamp-it.ch website
+
+_This is currently a proof-of-concept / demo project._
+
+The goal of this project is to demonstrate how to build a dynamic website with low external dependencies.
+Specifically we do not want to introduce frontend frameworks like Nextjs and we want to keep other dependencies at a minimum [explain why?].
+
+For an company or organization website or for a personal website it is often _not_ necessary to create a single page application
+and use a frontend framework. In fact it may be detrimental to the performance of the website (e.g. loading times) and it introduces
+a lot of unnecessary complexity (e.g. bundling, state management etc.). 
+
+On the other hand a completely static website may not offer enough flexibility and ease of use to update and manage content.
+
+For this demo we choose a somewhat mixed approach between a static and a dynamic page. Most of the website is built from static
+templates but specific areas for example a blog get the content from a database.
+
+The content management system is split up into a separate project: https://github.com/rebootl/revamp-backend
+
 ## WIP
 
 * add missing content pages

@@ -44,7 +44,7 @@ Install and run the CMS:
     npm i       # if not already done above
     npm run dev
 
-The server should be running at http://localhost:3003 and show a login screen.
+The server should be running at http://localhost:3003/admin and show a login screen.
 
 The example user and password are 'admin' and '1234'. This can be changed in the setup-example-database.js script.
 

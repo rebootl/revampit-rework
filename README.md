@@ -2,7 +2,7 @@
 
 _This is currently a proof-of-concept / demo / work-in-progress project._
 
-The goal of this project is to demonstrate how to build a dynamic website with few external dependencies.
+The goal of this project is to demonstrate a way to built a dynamic website with few external dependencies.
 
 For a simple company, organization or personal website it is often _not_ necessary to use a frontend framework and
 create a single page application. A simple server side rendered website can be sufficient and easier to maintain.
@@ -40,7 +40,7 @@ the dependencies for the website and CMS.
 
 Install and run the CMS:
 
-    cd ./cms    # from the base directory
+    cd ./cms    # if not already done above
     npm i       # if not already done above
     npm run dev
 
@@ -62,6 +62,6 @@ Install and run the main website:
 
 ### Tailwind CSS
 
-To rebuild the css run the following command in the `./website` and/or `./cms` directories:
+To rebuild the CSS after changes run the following command in the `./website` and/or `./cms` directories:
 
     npm run devtw

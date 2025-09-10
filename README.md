@@ -52,6 +52,8 @@ NOTE/TODO: Currently the users and passwords cannot yet be managed within the CM
 should never be used but instead a password should be set when executing the setup database script or at 1st login.
 As this is only a demo it is currently left as it is.
 
+Further information about the development and it's status see: ./cms/README.md
+
 ### Main website
 
 Install and run the main website:
@@ -59,6 +61,10 @@ Install and run the main website:
     cd ./website    # from the base directory
     npm i
     npm run dev
+
+The server should be running at http://localhost:3002 and show the main page of the website.
+
+Further information about the development and it's status see: ./website/README.md
 
 ### Tailwind CSS
 

@@ -1,10 +1,5 @@
 ## WIP
 
-
-## TODO
-
-* check/cleanup the dependencies in the package.jsons
-
 * add documentation
   * add a README with installation instructions, usage, etc.
     * disclaimer this is a proof-of-concept / demo
@@ -12,6 +7,10 @@
     * how to deploy it to production -> TBD
     * how to use the admin interface
     * how the routes and templating works
+
+## TODO
+
+* check/cleanup the dependencies in the package.jsons
 
 * header navigation responsive, currently it breaks on smaller width
 
@@ -40,7 +39,7 @@
 
 ## DONE
 
-* break out into separate repository
+* break out into separate directory
 
 * how to bundle tailwind for production?
   currently I'm just using Play CDN for development
@@ -50,4 +49,3 @@
      `npx tailwindcss -i ./tailwind-input.css -o ./static/tailwind.css`
 
      added the command to `npm run devtw`
-

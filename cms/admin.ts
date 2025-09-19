@@ -1,25 +1,28 @@
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
+import express from "express";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
 
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
-import databaseApp from './database/database.ts';
-import authApp from './auth/auth.ts';
-import { createLanguageApp } from './language/language.ts';
+import databaseApp from "./database/database.ts";
+import authApp from "./auth/auth.ts";
+import { createLanguageApp } from "./language/language.ts";
 
-import { isLoggedIn } from './auth/auth.ts';
+import { isLoggedIn } from "./auth/auth.ts";
 
-import { adminBaseTemplate } from './templates/adminBase.js';
-import { loginPageContent } from './templates/login.js';
-import { adminPageContent } from './templates/admin.js';
+import { adminBaseTemplate } from "./templates/adminBase.js";
+import { loginPageContent } from "./templates/login.js";
+import { adminPageContent } from "./templates/admin.js";
 
-import entriesApp from './entries.ts';
+import entriesApp from "./entries.ts";
 
 // const cookieName: string = process.env.ADMIN_COOKIE_NAME || 'admin-session-id';
 const PORT: number = process.env.PORT ? Number(process.env.PORT) : 3003;
 
 const app = express();
+
+// static files
+app.use("/static", express.static("static/"));
 
 // modules for parsing cookies and url encoded bodies
 // NOTE: cookie-parser and body-parser are needed by subsequent apps, but should only be loaded once
@@ -37,67 +40,68 @@ app.use(databaseApp);
 app.use(authApp);
 
 // Create admin language app with separate cookie and endpoint
-const languageApp = createLanguageApp('adminlang', '/admin/set-lang');
+const languageApp = createLanguageApp("adminlang", "/admin/set-lang");
 app.use(languageApp);
 
 // Use the entries app
 app.use(entriesApp);
 
 // Define the /admin endpoint
-app.get('/admin', isLoggedIn, (req: Request, res: Response) => {
+app.get("/admin", isLoggedIn, (req: Request, res: Response) => {
   if (!req.locals.loggedIn) {
-    res.redirect('/admin/login');
+    res.redirect("/admin/login");
     return;
   }
 
   // Fetch entries from database
   let entries = [];
-  let messageType = req.query.messageType as string || '';
+  let messageType = req.query.messageType as string || "";
 
   try {
-    const stmt = req.db.prepare('SELECT * FROM entries ORDER BY created_at DESC');
+    const stmt = req.db.prepare(
+      "SELECT * FROM entries ORDER BY created_at DESC",
+    );
     entries = stmt.all();
   } catch (err) {
-    messageType = 'errorDatabase';
-    console.error('Database error:', err);
+    messageType = "errorDatabase";
+    console.error("Database error:", err);
   }
 
   const content = adminPageContent({
-    currentLanguage: req.lang || 'en',
+    currentLanguage: req.lang || "en",
     messageType,
-    entries
+    entries,
   });
 
-  const ref = req.path || '';
+  const ref = req.path || "";
 
   const html = adminBaseTemplate({
     content,
     ref,
-    currentLanguage: req.lang || 'en',
+    currentLanguage: req.lang || "en",
     loggedIn: req.locals.loggedIn,
-    messageType
+    messageType,
   });
 
   res.send(html);
 });
 
-app.get('/admin/login', isLoggedIn, (req: Request, res: Response) => {
-
-  let messageType = req.query.messageType as string || '';
+app.get("/admin/login", isLoggedIn, (req: Request, res: Response) => {
+  let messageType = req.query.messageType as string || "";
 
   const content = loginPageContent({
-    currentLanguage: req.lang || 'en',
+    currentLanguage: req.lang || "en",
   });
 
   // Extract ref parameter - used for redirecting back to a specific page after login
-  const ref = req.path || '';
+  const ref = req.path || "";
 
   const html = adminBaseTemplate({
     content,
     ref,
-    currentLanguage: req.lang || 'en',
+    currentLanguage: req.lang || "en",
     loggedIn: req.locals.loggedIn,
-    messageType
+    messageType,
   });
 
   res.send(html);

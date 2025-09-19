@@ -31,18 +31,14 @@ the dependencies for the website and CMS.
 ### Setup example database
 
     mkdir ./db
-
-    cd ./cms
-    npm i
     deno run --allow-all ./setup-example-database.js
 
 ### CMS
 
 Install and run the CMS:
 
-    cd ./cms    # if not already done above
-    npm i       # if not already done above
-    npm run dev
+    cd ./cms
+    deno task dev
 
 The server should be running at http://localhost:3003/admin and show a login screen.
 
@@ -59,8 +55,7 @@ Further information about the development and it's status see: ./cms/README.md
 Install and run the main website:
 
     cd ./website    # from the base directory
-    npm i
-    npm run dev
+    deno task dev
 
 The server should be running at http://localhost:3002 and show the main page of the website.
 
@@ -70,4 +65,31 @@ Further information about the development and it's status see: ./website/README.
 
 To rebuild the CSS after changes run the following command in the `./website` and/or `./cms` directories:
 
-    npm run devtw
+    ./build-tailwind.sh
+
+## Deployment on a server for demonstration purposes
+
+Copy the .env.example file to .env and adjust the settings as needed.
+
+    cp .env.example .env
+
+Use docker to run the setup database script:
+
+    docker run --rm \
+      --env-file=.env \
+      -v db:/db \
+      -v .:/app \
+      -w /app \
+      denoland/deno:latest \
+      deno run --allow-all ./setup-example-database.js
+
+NOTE: This creates the database file with root permissions. Eventually you'll want to correct this:
+
+    sudo chown $USER:$USER ./db/db.sqlite
+
+Then use docker compose to run both servers in containers.
+
+    docker compose up -d
+
+Usually you would use a reverse on the server (e.g. nginx or apache) to forward requests to the two servers
+running the CMS and the main website and also set up SSL with e.g. certbot.

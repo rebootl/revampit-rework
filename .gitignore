@@ -1,3 +1,4 @@
 /admin/node_modules
 /website/node_modules
 /db/db.sqlite
+.env

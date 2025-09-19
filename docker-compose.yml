@@ -3,7 +3,6 @@ services:
     build: ./website
     volumes:
       - ./db:/db
-      - ./website:/app
     ports:
       - "3002:3002"
     command: ["deno", "run", "--allow-all", "server.ts"]
@@ -12,7 +11,6 @@ services:
     build: ./cms
     volumes:
       - ./db:/db
-      - ./cms:/app
     ports:
       - "3003:3003"
     command: ["deno", "run", "--allow-all", "admin.ts"]

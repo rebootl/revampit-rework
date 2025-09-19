@@ -75,6 +75,8 @@ Copy the .env.example file to .env and adjust the settings as needed.
 
 Use docker to run the setup database script:
 
+    mkdir db/
+
     docker run --rm \
       --env-file=.env \
       -v db:/db \

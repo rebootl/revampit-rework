@@ -22,7 +22,7 @@ import entriesApp from "./entries.ts";
 const app = express();
 
 // static files
-app.use("/static", express.static("static/"));
+app.use("/admin/static", express.static("cms/static"));
 
 // modules for parsing cookies and url encoded bodies
 // NOTE: cookie-parser and body-parser are needed by subsequent apps, but should only be loaded once

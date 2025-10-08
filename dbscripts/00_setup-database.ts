@@ -55,6 +55,21 @@ if (!adminExists) {
     .run(adminUsername, adminRealname, hashedPassword, 1);
 }
 
+// Add a test user
+// const testUsername = "test";
+// const testRealname = "Test User";
+// const testPassword = "1234";
+// const hashedTestPassword = bcrypt.hashSync(testPassword, 10);
+// const testUserExists = db.prepare("SELECT * FROM users WHERE username = ?").get(
+//   testUsername,
+// );
+// if (!testUserExists) {
+//   db.prepare(
+//     "INSERT INTO users (username, realname, pwhash, admin) VALUES (?, ?, ?, ?)",
+//   )
+//     .run(testUsername, testRealname, hashedTestPassword, 0);
+// }
+
 // test foreign keys by inserting I session with an invalid user id
 // const invalidSession = db.prepare(`
 //   INSERT INTO sessions (session_id, user_id, expires)

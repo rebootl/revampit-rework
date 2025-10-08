@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import express from "express";
 
 // NOTE: node:sqlite is currently Stability: 1.1 - Active development. (as of July 2025)
@@ -17,7 +19,7 @@ declare global {
   }
 }
 
-const dbFile: string = process.env.DB_FILE || "../db/db.sqlite";
+const dbFile: string = process.env.DB_FILE || "db/db.sqlite";
 
 const app = express();
 

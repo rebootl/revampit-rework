@@ -1,7 +1,7 @@
 import process from "node:process";
 
 import { DatabaseSync } from "node:sqlite";
-import bcrypt from "npm:bcrypt";
+import bcrypt from "bcrypt";
 
 // Connect to SQLite database
 const db = new DatabaseSync("db/db.sqlite");

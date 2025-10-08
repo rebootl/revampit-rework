@@ -11,7 +11,7 @@ export async function createEndpoints(
   baseTemplatePath: string,
   basePath = "",
 ): Promise<void> {
-  const baseTemplateModule = await import(baseTemplatePath);
+  const baseTemplateModule = await import(path.resolve(baseTemplatePath));
   const baseTemplate = baseTemplateModule.baseTemplate;
 
   const files = fs.readdirSync(routesDir);

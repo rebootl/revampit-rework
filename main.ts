@@ -8,6 +8,7 @@ import databaseApp from "./lib/database.ts";
 import { createLanguageApp } from "./lib/language.ts";
 // import { createEndpoints } from "./lib/routes.ts";
 import adminApp from "./cms/admin.ts";
+import exampleApp from "./website-example/website.ts";
 
 const PORT: number = process.env.PORT ? Number(process.env.PORT) : 3002;
 // TODO: COOKIENAME
@@ -37,6 +38,8 @@ app.use(languageApp);
 // it provides a login for the site owners and is used to
 // add and manage dynamic content like blog posts etc.
 app.use(adminApp);
+
+app.use(exampleApp);
 
 // below pages are rendered using the base template from './templates/base.js'
 

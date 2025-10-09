@@ -14,6 +14,7 @@
   },
   "tasks": {
     "dev": "deno run --allow-all --watch main.ts",
-    "devtw": "npx tailwindcss -o ./cms/static/tailwind.css --watch"
+    "devtwadmin": "cd ./cms/ && /usr/bin/tailwindcss -o ./static/tailwind.css --watch"
+    "devtwexample": "cd ./website-example/ && /usr/bin/tailwindcss -o ./static/tailwind.css --watch"
   }
 }

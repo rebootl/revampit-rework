@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 # Compile the main app
-RUN deno cache server.ts
+RUN deno cache main.ts
 
 # Run the app (enable Node compatibility and unstable features)
-CMD ["deno", "run", "--allow-all", "server.ts"]
+CMD ["deno", "run", "--allow-all", "main.ts"]

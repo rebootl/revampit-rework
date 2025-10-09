@@ -83,7 +83,7 @@ Use docker to run the setup database script:
       -v .:/app \
       -w /app \
       denoland/deno:latest \
-      deno run --allow-all ./setup-example-database.js
+      deno run --allow-all ./dbscripts/00_setup-database.ts
 
 NOTE: This creates the database file with root permissions. Eventually you'll want to correct this:
 

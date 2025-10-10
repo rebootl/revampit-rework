@@ -27,7 +27,7 @@ const app = express();
 const db = new DatabaseSync(dbFile);
 
 // Middleware to add database instance to request object
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
   req.db = db;
   next();
 });

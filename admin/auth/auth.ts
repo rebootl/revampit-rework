@@ -53,7 +53,7 @@ export function isLoggedIn(
     }
 
     req.locals.loggedIn = true;
-    req.locals.userName = session.user_name || "";
+    req.locals.userName = String(session.user_name) || "";
 
     next();
   } catch (error) {
@@ -61,6 +61,8 @@ export function isLoggedIn(
     res.status(500).send("An error occurred while checking session");
   }
 }
+
+app.use(isLoggedIn);
 
 // Login endpoint
 app.post(

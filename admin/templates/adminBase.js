@@ -30,8 +30,15 @@ const locale = {
  * @returns {string} The full HTML string
  */
 export const adminBaseTemplate = (
-  { content, ref, currentLanguage, loggedIn, messageType = "" },
-) => `
+  { content, req },
+) => {
+
+  const ref = req.path || '';
+  const currentLanguage = req.lang || 'en';
+  const loggedIn = req.locals.loggedIn || false;
+  const messageType = req.query.messageType || null;
+  
+  return `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -116,4 +123,4 @@ export const adminBaseTemplate = (
     </div>
   </body>
 </html>
-`;
+`};

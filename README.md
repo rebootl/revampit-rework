@@ -31,41 +31,37 @@ the dependencies for the website and CMS.
 ### Setup example database
 
     mkdir ./db
-    deno run --allow-all ./setup-example-database.js
+    deno run --allow-all ./dbscripts/00_setup-database.ts
+    deno run --allow-all ./dbscripts/01_setup-entries-table.ts
+    deno run --allow-all ./dbscripts/02_setup-example-data.ts
 
-### CMS
+### Run server
 
-Install and run the CMS:
+Install and run the server:
 
-    cd ./cms
     deno task dev
 
-The server should be running at http://localhost:3003/admin and show a login screen.
+The server should be running at http://localhost:3002 and show the main page of the website.
 
-The example user and password are 'admin' and '1234'. This can be changed in the setup-example-database.js script.
+The admin interface/CMS should be running at http://localhost:3002/admin and show a login screen.
+
+The example user and password are 'admin' and '1234'. This can be changed in the ./dbscripts/00_setup-database.ts script.
 
 NOTE/TODO: Currently the users and passwords cannot yet be managed within the CMS. Ideally unsafe default passwords
 should never be used but instead a password should be set when executing the setup database script or at 1st login.
 As this is only a demo it is currently left as it is.
 
-Further information about the development and it's status see: ./cms/README.md
-
-### Main website
-
-Install and run the main website:
-
-    cd ./website    # from the base directory
-    deno task dev
-
-The server should be running at http://localhost:3002 and show the main page of the website.
-
-Further information about the development and it's status see: ./website/README.md
+Further information about the development and it's status see: ./website-example/README.md and ./cms/README.md
 
 ### Tailwind CSS
 
-To rebuild the CSS after changes run the following command in the `./website` and/or `./cms` directories:
+The tailwind CLI is required to rebuild the CSS after changes. Install it via npm or use the standalone
+binary. TODO: Add link to tailwind installation instructions.
 
-    ./build-tailwind.sh
+To rebuild the CSS automatically on changes run in a separate terminal window:
+
+    deno task devtwexample
+    deno task devtwadmin
 
 ## Deployment on a server for demonstration purposes
 
@@ -73,7 +69,7 @@ Copy the .env.example file to .env and adjust the settings as needed.
 
     cp .env.example .env
 
-Use docker to run the setup database script:
+Use docker to run the setup database scripts:
 
     mkdir db/
 
@@ -84,6 +80,8 @@ Use docker to run the setup database script:
       -w /app \
       denoland/deno:latest \
       deno run --allow-all ./dbscripts/00_setup-database.ts
+
+NOTE: Run this for the respective database scripts as needed.
 
 NOTE: This creates the database file with root permissions. Eventually you'll want to correct this:
 

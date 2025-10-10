@@ -1,18 +1,8 @@
 services:
-  website:
+  app:
     build: .
     volumes:
       - ./db:/app/db
     ports:
       - "3002:3002"
     command: ["deno", "run", "--allow-all", "main.ts"]
-
-  # cms:
-  #   build: ./cms
-  #   volumes:
-  #     - ./db:/db
-  #   ports:
-  #     - "3003:3003"
-  #   command: ["deno", "run", "--allow-all", "admin.ts"]
-
-

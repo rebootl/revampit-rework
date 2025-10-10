@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 
 import databaseApp from "./lib/database.ts";
 import { createLanguageApp } from "./lib/language.ts";
-import adminApp from "./cms/admin.ts";
+import adminApp from "./admin/admin.ts";
 import exampleApp from "./website-example/website.ts";
 
 const PORT: number = process.env.PORT ? Number(process.env.PORT) : 3002;

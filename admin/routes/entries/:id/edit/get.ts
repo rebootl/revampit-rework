@@ -1,64 +1,43 @@
-// import express from "express";
-// import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
-// import { isLoggedIn } from "../../auth/auth.ts";
+import baseTemplate from "../../../../templates/adminBase.js";
+import editEntryPageContent from "../../../../templates/editEntry.js";
 
-// import { adminBaseTemplate } from "../../templates/adminBase.js";
-// import { editEntryPageContent } from "../../templates/editEntry.js";
-// import { entryNotFoundPageContent } from "../../templates/entryNotFound.js";
+function getEntry(req: Request) {
+  const entryId = req.params.id;
+  let entry = null;
+  try {
+    const stmt = req.db.prepare("SELECT * FROM entries WHERE id = ?");
+    entry = stmt.get(entryId);
+  } catch (err) {
+    console.error("Database error:", err);
+    return null;
+  }
+  return entry;
+}
 
-// const app = express();
+export default (req: Request, res: Response) => {
+  if (!req.locals.loggedIn) {
+    res.redirect("/admin/login");
+    return;
+  }
 
-// // Edit entry GET route
-// app.get(
-//   "/admin/entries/:id/edit",
-//   isLoggedIn,
-//   (req: Request, res: Response) => {
-//     if (!req.locals.loggedIn) {
-//       res.redirect("/admin/login");
-//       return;
-//     }
+  const isNew = false;
+  const entry = getEntry(req);
+  if (!entry) {
+    res.redirect("/admin?messageType=errorNotFound");
+    return;
+  }
 
-//     const entryId = req.params.id;
-//     let entry = null;
-//     let messageType = req.query.messageType as string;
+  const content = editEntryPageContent({
+    entry,
+    currentLanguage: req.lang || "en",
+    isNew,
+  });
 
-//     try {
-//       const stmt = req.db.prepare("SELECT * FROM entries WHERE id = ?");
-//       entry = stmt.get(entryId);
-
-//       if (!entry) {
-//         messageType = "errorNotFound";
-//       }
-//     } catch (err) {
-//       messageType = "errorDatabase";
-//       console.error("Database error:", err);
-//     }
-
-//     const content = entry
-//       ? editEntryPageContent({
-//         entry,
-//         currentLanguage: req.lang || "en",
-//         isNew: false,
-//       })
-//       : entryNotFoundPageContent({
-//         currentLanguage: req.lang || "en",
-//       });
-
-//     const ref = req.path || "";
-
-//     const html = adminBaseTemplate({
-//       content,
-//       ref,
-//       currentLanguage: req.lang || "en",
-//       loggedIn: req.locals.loggedIn,
-//       messageType: messageType || "",
-//     });
-
-//     res.send(html);
-//   },
-// );
-
+  const html = baseTemplate({ req, content });
+  res.send(html);
+};
 // // Edit entry POST route
 // app.post(
 //   "/admin/entries/:id/edit",

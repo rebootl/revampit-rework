@@ -22,7 +22,9 @@ export async function createEndpoints(
 
       // NOTE: import needs a relative path prefixed with './', or an absolute path
       // path.resolve makes it absolute
+
       // TODO: error handling
+
       if (["get.js", "get.ts", "post.js", "post.ts"].includes(file) === false) {
         continue;
       }

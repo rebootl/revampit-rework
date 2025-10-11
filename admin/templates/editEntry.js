@@ -1,12 +1,4 @@
-/**
- * Returns the entry form content to be inserted into the admin base template.
- * @param {Object} params
- * @param {Object | null} params.entry - The entry object to edit (null for new entries)
- * @param {string} params.currentLanguage - The current language
- * @param {boolean} params.isNew - Whether this is a new entry form
- * @returns {string} The HTML content for the entry form page.
- */
-export const editEntryPageContent = ({ entry, currentLanguage, isNew = false }) => `
+export default ({ entry, currentLanguage, isNew = false }) => `
 <div class="min-h-screen px-4 sm:px-6 lg:px-8 py-8">
   <div class="max-w-4xl mx-auto">
     <div class="mb-8">
@@ -115,7 +107,7 @@ export const editEntryPageContent = ({ entry, currentLanguage, isNew = false }) 
         <!-- Action buttons -->
         <div class="flex justify-between pt-6 border-t border-gray-200">
           <a
-            href="/admin"
+            href="/admin/entries"
             class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Cancel

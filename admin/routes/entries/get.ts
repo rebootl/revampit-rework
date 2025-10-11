@@ -1,5 +1,7 @@
 import type { Request, Response } from "express";
 
+import baseTemplate from "../../templates/adminBase.js";
+
 function getEntries(req: Request) {
   // const lang = req.lang || "en";
   try {
@@ -14,14 +16,14 @@ function getEntries(req: Request) {
   }
 }
 
-export default function pageContent(req: Request, res: Response) {
+export default (req: Request, res: Response) => {
   if (!req.locals.loggedIn) {
     res.redirect("/admin/login");
     return;
   }
   const entries = getEntries(req);
   // const lang = req.language || "en";
-  return `
+  const content = `
 <div class="min-h-screen px-4 sm:px-6 lg:px-8 py-8">
   <div class="max-w-7xl mx-auto">
 
@@ -132,4 +134,6 @@ export default function pageContent(req: Request, res: Response) {
   </div>
 </div>
 `;
-}
+  const html = baseTemplate({ req, content });
+  res.send(html);
+};

@@ -15,13 +15,15 @@ export default function loginPageContent(req: Request, res: Response) {
   try {
     // Delete the session from the database
     const stmt = req.db.prepare("DELETE FROM sessions WHERE session_id = ?");
-    const result = stmt.run(sessionId);
+    const _result = stmt.run(sessionId);
+    console.log("Session deleted:", _result);
 
     // Clear the session cookie
     res.clearCookie(cookieName, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
     });
+    console.log("Cleared cookie:", cookieName);
 
     res.redirect("/admin/login?messageType=successLogout");
   } catch (error) {

@@ -3,7 +3,8 @@ import { renderMessage } from "./messages.js";
 const locale = {
   "en": {
     "nav": {
-      "dashboard": "Entries",
+      "dashboard": "Dashboard",
+      "entries": "Entries",
       "settings": "Settings",
       "users": "Users",
       "logout": "Logout",
@@ -11,7 +12,8 @@ const locale = {
   },
   "de": {
     "nav": {
-      "dashboard": "Einträge",
+      "dashboard": "Dashboard",
+      "entries": "Einträge",
       "settings": "Einstellungen",
       "users": "Benutzer",
       "logout": "Abmelden",
@@ -19,9 +21,7 @@ const locale = {
   },
 };
 
-export const adminBaseTemplate = (
-  { content, req },
-) => {
+export default ({ content, req }) => {
 
   const ref = req.path || '';
   const currentLanguage = req.lang || 'en';
@@ -59,6 +59,9 @@ export const adminBaseTemplate = (
     ? `
             <a href="/admin" class="text-sm font-semibold leading-6 text-gray-900 hover:text-green-600 transition-colors duration-200">${
       locale[currentLanguage].nav.dashboard
+    }</a>
+            <a href="/admin/entries" class="text-sm font-semibold leading-6 text-gray-900 hover:text-green-600 transition-colors duration-200">${
+      locale[currentLanguage].nav.entries
     }</a>
             <!--
             <a href="/admin/settings" class="text-sm font-semibold leading-6 text-gray-900 hover:text-green-600 transition-colors duration-200">${

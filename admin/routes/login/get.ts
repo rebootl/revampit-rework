@@ -1,5 +1,7 @@
 import type { Request, Response } from "express";
 
+import baseTemplate from "../../templates/adminBase.js";
+
 const locale = {
   "en": {
     "login": {
@@ -25,9 +27,9 @@ const locale = {
   },
 };
 
-export default function loginPageContent(req: Request, _res: Response) {
+export default (req: Request, res: Response) => {
   const currentLanguage = req.lang || "en";
-  return `
+  const content = `
 <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md">
     <div class="bg-white rounded-2xl shadow-xl p-8 sm:p-10">
@@ -85,4 +87,6 @@ export default function loginPageContent(req: Request, _res: Response) {
   </div>
 </div>
 `;
-}
+  const html = baseTemplate({ req, content });
+  res.send(html);
+};

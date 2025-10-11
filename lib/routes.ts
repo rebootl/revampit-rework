@@ -6,12 +6,8 @@ import express from "express";
 export async function createEndpoints(
   app: express.Application,
   routesDir: string,
-  baseTemplatePath: string,
   basePath = "",
 ): Promise<void> {
-  const baseTemplateModule = await import(path.resolve(baseTemplatePath));
-  const baseTemplate = baseTemplateModule.adminBaseTemplate;
-
   const files = fs.readdirSync(routesDir);
   // let templateFile: string | undefined;
 
@@ -22,24 +18,33 @@ export async function createEndpoints(
 
     if (stat.isFile()) {
       // e.g. './routes/' + 'get.ts'
-      const templatePath = path.join(routesDir, file);
+      const p = path.join(routesDir, file);
 
       // NOTE: import needs a relative path prefixed with './', or an absolute path
       // path.resolve makes it absolute
       // TODO: error handling
-      const templateModule = await import(path.resolve(templatePath));
+      if (["get.js", "get.ts", "post.js", "post.ts"].includes(file) === false) {
+        continue;
+      }
+      const m = await import(path.resolve(p));
+      const f = m.default;
+      if (typeof f !== "function") {
+        console.warn(
+          `Skipping ${p}, no default export function found.`,
+        );
+        continue;
+      }
 
       if (file === "get.js" || file === "get.ts") {
-        // TODO: error handling
-        const templateFunction = templateModule.default;
+        console.log(
+          `Creating GET endpoint at ${basePath}, from ${p}`,
+        );
 
-        app.get(basePath, (req: express.Request, res: express.Response) => {
-          const content = templateFunction(req, res);
-          const html = baseTemplate({ req, content });
-          res.send(html);
-        });
+        app.get(basePath, f);
       } else if (file === "post.js" || file === "post.ts") {
-        const f = templateModule.default;
+        console.log(
+          `Creating POST endpoint at ${basePath}, from ${p}`,
+        );
         app.post(basePath, f);
       }
     } // Recursively create endpoints for subdirectories
@@ -49,7 +54,7 @@ export async function createEndpoints(
       // NOTE: this is for windows compatibility, but it's not tested
       // I'm not sure we really need this
       const nextBase = `${basePath}/${file}`.replace(/\\/g, "/");
-      createEndpoints(app, filePath, baseTemplatePath, nextBase);
+      createEndpoints(app, filePath, nextBase);
     }
   }
 }

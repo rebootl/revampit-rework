@@ -9,9 +9,7 @@ export async function createEndpoints(
   basePath = "",
 ): Promise<void> {
   const files = fs.readdirSync(routesDir);
-  // let templateFile: string | undefined;
 
-  // Find the first .js file in the directory
   for (const file of files) {
     const filePath = path.join(routesDir, file);
     const stat = fs.statSync(filePath);

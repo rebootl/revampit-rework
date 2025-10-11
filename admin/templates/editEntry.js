@@ -7,7 +7,7 @@ export default ({ entry, currentLanguage, isNew = false }) => `
     </div>
 
     <div class="bg-white shadow rounded-lg">
-      <form method="POST" action="${isNew ? '/admin/entries/new' : `/admin/entries/${entry.id}/edit`}" class="p-6 space-y-6">
+      <form method="POST" action="${isNew ? '/admin/entries/new' : `/admin/entries/edit/${entry.id}`}" class="p-6 space-y-6">
         <!-- Title -->
         <div>
           <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title</label>

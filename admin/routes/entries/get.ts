@@ -103,7 +103,7 @@ export default (req: Request, res: Response) => {
         }">${entry.draft ? "Draft" : "Pub"}</span>
                     </td>
                     <td class="px-3 py-3 whitespace-nowrap text-sm text-gray-900 w-16">
-                      <a href="/admin/entries/${entry.id}/edit" class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700">
+                      <a href="/admin/entries/edit/${entry.id}" class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700">
                         Edit
                       </a>
                     </td>

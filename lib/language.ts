@@ -1,18 +1,23 @@
-import express from 'express';
+import process from "node:process";
 
-import { Request, Response } from 'express';
+import express from "express";
+
+import type { Request as _Request, Response } from "express";
 
 // Extend Request interface to include lang property
 declare global {
   namespace Express {
     interface Request {
-      lang?: string;
+      lang?: "en" | "de";
     }
   }
 }
 
 // Factory function to create language app with custom cookie name and endpoint
-export function createLanguageApp(cookieName: string = 'lang', endpointPath: string = '/set-lang') {
+export function createLanguageApp(
+  cookieName: string = "lang",
+  endpointPath: string = "/set-lang",
+) {
   const app = express();
 
   // NOTE: cookie-parser is required, but it should be only loaded once in order to avoid
@@ -20,14 +25,18 @@ export function createLanguageApp(cookieName: string = 'lang', endpointPath: str
 
   // Function to set language cookie
   function setLanguageCookie(res: Response, language: string) {
-    res.cookie(cookieName, language, { maxAge: 60 * 60 * 24 * 365 * 10, httpOnly: true, secure: false });
+    res.cookie(cookieName, language, {
+      maxAge: 60 * 60 * 24 * 365 * 10,
+      httpOnly: true,
+      secure: false,
+    });
   }
 
   // Language middleware
   app.use((req, res, next) => {
     let language = req.cookies?.[cookieName];
-    if (language !== 'en' && language !== 'de') {
-      language = 'en';
+    if (language !== "en" && language !== "de") {
+      language = "en";
       setLanguageCookie(res, language);
     }
     req.lang = language;
@@ -37,12 +46,12 @@ export function createLanguageApp(cookieName: string = 'lang', endpointPath: str
   // Endpoint to set language cookie
   app.get(endpointPath, (req, res) => {
     // console.log('Setting language cookie');
-    const lang = req.query.lang || 'en';
-    if (lang !== 'en' && lang !== 'de') {
-      return res.status(400).send('Invalid language');
+    const lang = req.query.lang || "en";
+    if (lang !== "en" && lang !== "de") {
+      return res.status(400).send("Invalid language");
     }
     setLanguageCookie(res, lang);
-    const ref = req.query.ref || '/';
+    const ref = req.query.ref || "/";
     res.redirect(ref);
   });
 
@@ -50,5 +59,5 @@ export function createLanguageApp(cookieName: string = 'lang', endpointPath: str
 }
 
 // Default export with original behavior
-const app = createLanguageApp(process.env.LANGUAGE_COOKIE_NAME || 'lang');
+const app = createLanguageApp(process.env.LANGUAGE_COOKIE_NAME || "lang");
 export default app;

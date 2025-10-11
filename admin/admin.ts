@@ -1,14 +1,14 @@
 import express from "express";
 
-import { Request, Response } from "express";
+// import { Request, Response } from "express";
 
 import authApp from "./auth/auth.ts";
-import { isLoggedIn } from "./auth/auth.ts";
+// import { isLoggedIn } from "./auth/auth.ts";
 
 import { createEndpoints } from "../lib/routes.ts";
 
-import { adminBaseTemplate } from "./templates/adminBase.js";
-import { loginPageContent } from "./templates/login.js";
+// import { adminBaseTemplate } from "./templates/adminBase.js";
+// import { loginPageContent } from "./templates/login.js";
 // import { adminPageContent } from "./templates/admin.js";
 
 // import entriesApp from "./routes/entries/entries.ts";
@@ -71,25 +71,22 @@ createEndpoints(
 //   res.send(html);
 // });
 
-app.get("/admin/login", isLoggedIn, (req: Request, res: Response) => {
-  let messageType = req.query.messageType as string || "";
+// app.get("/admin/login", isLoggedIn, (req: Request, res: Response) => {
+//   // let messageType = req.query.messageType as string || "";
 
-  const content = loginPageContent({
-    currentLanguage: req.lang || "en",
-  });
+//   const content = loginPageContent({
+//     currentLanguage: req.lang || "en",
+//   });
 
-  // Extract ref parameter - used for redirecting back to a specific page after login
-  const ref = req.path || "";
+//   // Extract ref parameter - used for redirecting back to a specific page after login
+//   // const ref = req.path || "";
 
-  const html = adminBaseTemplate({
-    content,
-    ref,
-    currentLanguage: req.lang || "en",
-    loggedIn: req.locals.loggedIn,
-    messageType,
-  });
+//   const html = adminBaseTemplate({
+//     content,
+//     req,
+//   });
 
-  res.send(html);
-});
+//   res.send(html);
+// });
 
 export default app;

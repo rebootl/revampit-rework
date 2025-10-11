@@ -19,16 +19,6 @@ const locale = {
   },
 };
 
-/**
- * Returns the admin HTML template with the provided content inserted.
- * @param {Object} params - The parameters object
- * @param {string} params.content - The HTML content to insert into the main area
- * @param {string} params.ref - The referrer URL
- * @param {string} params.currentLanguage - The current language
- * @param {boolean} params.loggedIn - Indicates if the user is logged in
- * @param {string} params.messageType - The type of message to display
- * @returns {string} The full HTML string
- */
 export const adminBaseTemplate = (
   { content, req },
 ) => {

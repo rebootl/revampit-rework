@@ -39,8 +39,8 @@ export async function createEndpoints(
           res.send(html);
         });
       } else if (file === "post.js" || file === "post.ts") {
-        const f = templateModule;
-        console.log(f);
+        const f = templateModule.default;
+        app.post(basePath, f);
       }
     } // Recursively create endpoints for subdirectories
     else if (stat.isDirectory()) {

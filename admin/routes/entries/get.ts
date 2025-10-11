@@ -1,5 +1,7 @@
+import type { Request, Response } from "express";
+
 function getEntries(req: Request) {
-  const lang = req.lang || "en";
+  // const lang = req.lang || "en";
   try {
     const stmt = req.db.prepare(
       "SELECT * FROM entries ORDER BY created_at DESC",
@@ -18,7 +20,7 @@ export default function pageContent(req: Request, res: Response) {
     return;
   }
   const entries = getEntries(req);
-  const lang = req.language || "en";
+  // const lang = req.language || "en";
   return `
 <div class="min-h-screen px-4 sm:px-6 lg:px-8 py-8">
   <div class="max-w-7xl mx-auto">
@@ -79,13 +81,13 @@ export default function pageContent(req: Request, res: Response) {
         }</span>
                     </td>
                     <td class="px-3 py-3 whitespace-nowrap text-xs text-gray-500 w-24">${
-          new Date(entry.created_at).toLocaleDateString("en-US", {
+          new Date(entry.created_at as string).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
           })
         }</td>
                     <td class="px-3 py-3 whitespace-nowrap text-xs text-gray-500 w-24">${
-          new Date(entry.modified_at).toLocaleDateString("en-US", {
+          new Date(entry.modified_at as string).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
           })

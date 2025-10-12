@@ -3,12 +3,12 @@ import type { Request, Response } from "express";
 import { baseTemplate } from "../../../templates/base.js";
 
 function getBlogEntry(req: Request) {
-  const lang = (req as any).lang || 'en';
+  const lang = req.lang || 'en';
 
   const { slug } = req.params as { slug: string };
 
   try {
-    const stmt = (req as any).db.prepare('SELECT * FROM entries WHERE type = ? AND slug = ? AND draft = 0 AND language = ? LIMIT 1');
+    const stmt = req.db.prepare('SELECT * FROM entries WHERE type = ? AND slug = ? AND draft = 0 AND language = ? LIMIT 1');
     const entry = stmt.get('blog', slug, lang);
     return entry;
   } catch (error) {
@@ -29,7 +29,7 @@ export default (req: Request, res: Response) => {
       </article>
     </div>
   </main>`;
-    const html = baseTemplate({ content, req: req as any });
+    const html = baseTemplate({ content, req });
     res.send(html);
     return;
   }
@@ -44,6 +44,6 @@ export default (req: Request, res: Response) => {
     </div>
   </main>`;
 
-  const html = baseTemplate({ content, req: req as any });
+  const html = baseTemplate({ content, req });
   res.send(html);
 };

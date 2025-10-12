@@ -142,6 +142,6 @@ export default (req: Request, res: Response) => {
 </main>
 `.trim();
 
-  const html = baseTemplate({ content, req: req as any });
+  const html = baseTemplate({ content, req });
   res.send(html);
-};
+}

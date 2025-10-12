@@ -79,7 +79,7 @@ const projects = [
 ];
 
 export default (req: Request, res: Response) => {
-  const language = (req as any).lang || 'en';
+  const language = req.lang || 'en';
   const content = `
   <main class="pt-20 min-h-screen">
     <section class="bg-gray-200 py-20">
@@ -108,6 +108,6 @@ export default (req: Request, res: Response) => {
     </section>
   </main>`;
 
-  const html = baseTemplate({ content, req: req as any });
+  const html = baseTemplate({ content, req });
   res.send(html);
 };

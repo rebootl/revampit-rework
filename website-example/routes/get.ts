@@ -137,7 +137,7 @@ export default (req: Request, res: Response) => {
   const language = req.lang || "en";
   const newsData = getNewsData(req);
 
-  const content = html`
+  const content = `
     <main class="pt-20 min-h-screen">
       <!-- Hero Banner -->
       <section
@@ -148,14 +148,17 @@ export default (req: Request, res: Response) => {
             <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               ${locale[language].heroBannerTitle}
             </h1>
-            <p class="text-xl text-green-100">${locale[language]
-              .heroBannerDescription}</p>
+            <p class="text-xl text-green-100">${
+    locale[language]
+      .heroBannerDescription
+  }</p>
           </div>
         </div>
       </section>
       <!-- News Section -->
-      ${newsData
-        ? `
+      ${
+    newsData
+      ? `
     <section class="py-20 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold mb-12 text-center">${newsData.title}</h2>
@@ -165,12 +168,15 @@ export default (req: Request, res: Response) => {
       </div>
     </section>
   `
-        : ""}
+      : ""
+  }
       <!-- Mission Section -->
       <section class="py-20 px-4 max-w-6xl mx-auto">
         <div class="space-y-8">
-          <h2 class="text-3xl font-bold">${locale[language]
-            .missionSectionTitle}</h2>
+          <h2 class="text-3xl font-bold">${
+    locale[language]
+      .missionSectionTitle
+  }</h2>
           <div class="space-y-6">
             <p class="text-lg">
               ${locale[language].missionSectionText}
@@ -184,43 +190,59 @@ export default (req: Request, res: Response) => {
                 class="object-cover w-full h-full"
               />
             </div>
-            <p class="text-sm text-gray-600 mt-2 italic text-center">${locale[
-              language
-            ].storefrontCaption}</p>
+            <p class="text-sm text-gray-600 mt-2 italic text-center">${
+    locale[
+      language
+    ].storefrontCaption
+  }</p>
           </div>
         </div>
       </section>
       <!-- Impact Areas -->
       <section class="py-20 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-3xl font-bold mb-12 text-center">${locale[language]
-            .impactSectionTitle}</h2>
+          <h2 class="text-3xl font-bold mb-12 text-center">${
+    locale[language]
+      .impactSectionTitle
+  }</h2>
           <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white p-8 rounded-lg shadow-md">
-              <h3 class="text-xl font-semibold mb-4">${locale[language]
-                .impactHardwareTitle}</h3>
+              <h3 class="text-xl font-semibold mb-4">${
+    locale[language]
+      .impactHardwareTitle
+  }</h3>
               <div class="space-y-4 text-lg">
-                ${locale[language].impactHardwareBullets.map((b: string) =>
-                  `<p class="mb-4">${b}</p>`
-                ).join("")}
+                ${
+    locale[language].impactHardwareBullets.map((b: string) =>
+      `<p class="mb-4">${b}</p>`
+    ).join("")
+  }
               </div>
             </div>
             <div class="bg-white p-8 rounded-lg shadow-md">
-              <h3 class="text-xl font-semibold mb-4">${locale[language]
-                .impactOpenSourceTitle}</h3>
+              <h3 class="text-xl font-semibold mb-4">${
+    locale[language]
+      .impactOpenSourceTitle
+  }</h3>
               <div class="space-y-4 text-lg">
-                ${locale[language].impactOpenSourceBullets.map((b: string) =>
-                  `<p class="mb-4">${b}</p>`
-                ).join("")}
+                ${
+    locale[language].impactOpenSourceBullets.map((b: string) =>
+      `<p class="mb-4">${b}</p>`
+    ).join("")
+  }
               </div>
             </div>
             <div class="bg-white p-8 rounded-lg shadow-md">
-              <h3 class="text-xl font-semibold mb-4">${locale[language]
-                .impactCommunityTitle}</h3>
+              <h3 class="text-xl font-semibold mb-4">${
+    locale[language]
+      .impactCommunityTitle
+  }</h3>
               <div class="space-y-4 text-lg">
-                ${locale[language].impactCommunityBullets.map((b: string) =>
-                  `<p class="mb-4">${b}</p>`
-                ).join("")}
+                ${
+    locale[language].impactCommunityBullets.map((b: string) =>
+      `<p class="mb-4">${b}</p>`
+    ).join("")
+  }
               </div>
             </div>
           </div>
@@ -229,50 +251,68 @@ export default (req: Request, res: Response) => {
       <!-- By the Numbers Section -->
       <section class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-3xl font-bold mb-12 text-center">${locale[language]
-            .byNumbersSectionTitle}</h2>
+          <h2 class="text-3xl font-bold mb-12 text-center">${
+    locale[language]
+      .byNumbersSectionTitle
+  }</h2>
           <div class="grid md:grid-cols-2 gap-8">
             <div class="bg-green-50 p-8 rounded-lg shadow-md">
-              <h3 class="text-2xl font-bold text-green-800 mb-2">${locale[
-                language
-              ].byNumbersEnvTitle}</h3>
+              <h3 class="text-2xl font-bold text-green-800 mb-2">${
+    locale[
+      language
+    ].byNumbersEnvTitle
+  }</h3>
               <div class="space-y-6">
                 <div>
                   <p class="text-4xl font-bold text-green-700 mb-2">5+</p>
-                  <p class="text-gray-600">${locale[language]
-                    .byNumbersEnvLifespan}</p>
+                  <p class="text-gray-600">${
+    locale[language]
+      .byNumbersEnvLifespan
+  }</p>
                 </div>
                 <div>
                   <p class="text-4xl font-bold text-green-700 mb-2">1000+</p>
-                  <p class="text-gray-600">${locale[language]
-                    .byNumbersEnvDevices}</p>
+                  <p class="text-gray-600">${
+    locale[language]
+      .byNumbersEnvDevices
+  }</p>
                 </div>
                 <div>
                   <p class="text-4xl font-bold text-green-700 mb-2">75%</p>
-                  <p class="text-gray-600">${locale[language]
-                    .byNumbersEnvRefurb}</p>
+                  <p class="text-gray-600">${
+    locale[language]
+      .byNumbersEnvRefurb
+  }</p>
                 </div>
               </div>
             </div>
             <div class="bg-green-50 p-8 rounded-lg shadow-md">
-              <h3 class="text-2xl font-bold text-green-800 mb-2">${locale[
-                language
-              ].byNumbersCommunityTitle}</h3>
+              <h3 class="text-2xl font-bold text-green-800 mb-2">${
+    locale[
+      language
+    ].byNumbersCommunityTitle
+  }</h3>
               <div class="space-y-6">
                 <div>
                   <p class="text-4xl font-bold text-green-700 mb-2">20+</p>
-                  <p class="text-gray-600">${locale[language]
-                    .byNumbersCommunityTrained}</p>
+                  <p class="text-gray-600">${
+    locale[language]
+      .byNumbersCommunityTrained
+  }</p>
                 </div>
                 <div>
                   <p class="text-4xl font-bold text-green-700 mb-2">90%</p>
-                  <p class="text-gray-600">${locale[language]
-                    .byNumbersCommunityInterns}</p>
+                  <p class="text-gray-600">${
+    locale[language]
+      .byNumbersCommunityInterns
+  }</p>
                 </div>
                 <div>
                   <p class="text-4xl font-bold text-green-700 mb-2">10+</p>
-                  <p class="text-gray-600">${locale[language]
-                    .byNumbersCommunityReintegration}</p>
+                  <p class="text-gray-600">${
+    locale[language]
+      .byNumbersCommunityReintegration
+  }</p>
                 </div>
               </div>
             </div>
@@ -282,8 +322,10 @@ export default (req: Request, res: Response) => {
       <!-- Our Story -->
       <section class="py-20 px-4 max-w-6xl mx-auto">
         <div class="space-y-8">
-          <h2 class="text-3xl font-bold">${locale[language]
-            .storySectionTitle}</h2>
+          <h2 class="text-3xl font-bold">${
+    locale[language]
+      .storySectionTitle
+  }</h2>
           <div class="space-y-6 text-lg">
             <p>
               ${locale[language].storySectionP1}
@@ -300,8 +342,10 @@ export default (req: Request, res: Response) => {
       <!-- Call to Action -->
       <section class="py-20 bg-green-600 text-white">
         <div class="max-w-4xl mx-auto text-center px-4">
-          <h2 class="text-3xl font-bold mb-6">${locale[language]
-            .ctaSectionTitle}</h2>
+          <h2 class="text-3xl font-bold mb-6">${
+    locale[language]
+      .ctaSectionTitle
+  }</h2>
           <p class="text-xl mb-8">
             ${locale[language].ctaSectionText}
           </p>

@@ -146,6 +146,14 @@ export const baseTemplate = ({ content, req }) => {
 
       <!-- Header -->
       <header class="bg-white/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+
+        <div class="bg-yellow-50 border-t border-b border-yellow-200 text-yellow-800">
+          <div class="mx-auto max-w-7xl px-6 py-3 flex items-center justify-center text-sm">
+            <span class="mr-3 font-semibold">Demo:</span>
+            <span>This is a demo page — for the real site go to <a href="https://revamp-it.ch" class="underline text-green-600 hover:text-green-700" target="_blank" rel="noopener noreferrer">revamp-it.ch</a>.</span>
+          </div>
+        </div>
+
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div class="flex lg:flex-1 items-center gap-4">
             <a href="/" class="flex items-center gap-2">
@@ -189,6 +197,8 @@ export const baseTemplate = ({ content, req }) => {
           </div>
         </nav>
       </header>
+
+      <div class="pt-8"></div>
 
       ${content}
 

@@ -198,7 +198,7 @@ export const baseTemplate = ({ content, req }) => {
         </nav>
       </header>
 
-      <div class="pt-8"></div>
+      <div class="pt-12"></div>
 
       ${content}
 
